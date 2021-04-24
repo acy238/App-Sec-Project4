@@ -1,17 +1,19 @@
-1. What are the two types of Intents?
+Question 1. What are the two types of Intents?
 Answer: Implicit and Explicit Intents
 
-2. Which of the two types of Intents are more secure?
+Question 2. Which of the two types of Intents are more secure?
 Answer: Explicit Intents, however it is not always practical/realistic in modern times.
 
-3. What type of Intent is shown on lines 69 to 73 of SecondFragment.kt?
+Question 3. What type of Intent is shown on lines 69 to 73 of SecondFragment.kt?
 Answer: Lines 69-73 in SecondFragment.kt show an implicit intent, because it does not specify which Android components to be called - just the action to perform.
 
-4. What type of Intent is shown on lines 68 to 70 of ThirdFragment.kt?
+Question 4. What type of Intent is shown on lines 68 to 70 of ThirdFragment.kt?
 Answer: Lines 68-70 of ThirdFragment.kt show an explicit intent, because the call included the specific activity class in the parameter: "ProductScrollingActivity::class.java"
 
-5. Which of these two Intents is the proper way to do an Intent?
+Question 5. Which of these two Intents is the proper way to do an Intent?
 Answer: The explicit intent from ThirdFragment.kt is the proper way to do an Intent.
 
 Lastly, explain which intent needed to be fixed and why.
-Answer:
+Answer: We changed the implicit intent in SecondFragment.kt to an explicit intent with this code below: 
+-> var intent = Intent(activity, CardScrollingActivity::class.java)
+The code above includes the specific activity class when called for the intent type to browse giftcards.

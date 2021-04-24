@@ -16,5 +16,6 @@ Answer: The explicit intent from ThirdFragment.kt is the proper way to do an Int
 
 Lastly, explain which intent needed to be fixed and why.
 Answer: We changed the implicit intent in SecondFragment.kt to an explicit intent with this code below: 
-  -> var intent = Intent(activity, CardScrollingActivity::class.java)
+  Yes -> var intent = Intent(activity, ProductScrollingActivity::class.java)
+  No? -> var intent = Intent(activity, CardScrollingActivity::class.java)
   The code above includes the specific activity class when called for the intent type to browse giftcards.

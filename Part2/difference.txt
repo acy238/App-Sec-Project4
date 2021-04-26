@@ -19,3 +19,14 @@ Answer: We changed the implicit intent in SecondFragment.kt to an explicit inten
   Yes -> var intent = Intent(activity, ProductScrollingActivity::class.java)
   No? -> var intent = Intent(activity, CardScrollingActivity::class.java)
   The code above includes the specific activity class when called for the intent type to browse giftcards.
+
+Within AndroidManifest.xml, we made the following changes to permissions.
+First, we created/defined our own app's custom permissions with the <permission> tag within <manifest>. 
+Next, we included the name of our custom permission with the <uses-permission> tag within <manifest> for our app.
+Lastly, we restrict other app's interactions with our app's intents by including the "android:permission" attribute to the <activity> tag.
+  This attribute is added to the (5) following activities in the manifest:
+    1. UseCard
+    2. GetCard
+    3. ProductScrollingActivity
+    4. CardScrollingActivity
+    5. MainActivity

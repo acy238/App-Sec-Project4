@@ -1,0 +1,13 @@
+We can see that when a card is used (by looking at the file: UseCard.kt) that a "token" is generated from the "loggedInUser" at line #37.
+  line #37 -> var token : String = "Token " + loggedInUser?.token.toString()
+  This token is subsequently passed into a function call as the second parameter at line #48.
+  
+Starting at line #48, client.useCard(card?.id, token)?.enqueue(object : Callback<Card?> {...}, we see that the token is the second parameter.
+  Within the file: CardInterface.kt, we see that the second parameter of the function "useCard" is the @Header for "Authorization" (authHeader). 
+  And the value given to the second parameter here is "token".
+Hence, the application is telling the server to use a giftcard with that specific giftcard number, and special token. 
+  
+The problem here that could occur is if two separate and distinct logged-in users:
+  1. Registered their account with the same password and 
+  2. Purchased the same giftcard type (i.e., same giftcard number)
+Since both users have the same password, they would have the same "token" for the same giftcard types.

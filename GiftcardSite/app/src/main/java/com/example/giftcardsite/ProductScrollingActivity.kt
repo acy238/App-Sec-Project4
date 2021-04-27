@@ -30,7 +30,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, LocationListener {
+class ProductScrollingActivity : AppCompatActivity() {
     var loggedInUser: User? = null
 //     private lateinit var sensorManager: SensorManager
 //     private var mAccel : Sensor? = null
@@ -39,11 +39,11 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val locationPermissionCode = 2
-        var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode)
-        }
+//         val locationPermissionCode = 2
+//         var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+//         if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+//             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode)
+//         }
 //         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
 //         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 //         mAccel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)

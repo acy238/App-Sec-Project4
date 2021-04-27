@@ -11,3 +11,6 @@ The problem here that could occur is if two separate and distinct logged-in user
   1. Registered their account with the same password and 
   2. Purchased the same giftcard type (i.e., same giftcard number)
 Since both users have the same password, they would have the same "token" for the same giftcard types.
+
+A potential would be to change the User API for the "setToken" function, to also include the "username" to be a part of the token generation. 
+  This approach ensures that a giftcard of any type, can only be used by the original purchaser (since token generation considers both username and password).

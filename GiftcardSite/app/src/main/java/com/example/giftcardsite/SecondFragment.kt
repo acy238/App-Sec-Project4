@@ -16,6 +16,9 @@ import com.example.giftcardsite.api.model.RegisterInfo
 import com.example.giftcardsite.api.model.User
 import com.example.giftcardsite.api.service.UserInterface
 import okhttp3.MediaType.Companion.toMediaType
+
+import okhttp3.OkHttpClient
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,8 +47,10 @@ class SecondFragment : Fragment() {
             var email : String = view.findViewById<EditText>(R.id.registerEmailAddress).text.toString()
             var password : String = view.findViewById<EditText>(R.id.registerPassword).text.toString()
             var password2 : String = view.findViewById<EditText>(R.id.registerConfirmPassword).text.toString()
-
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(GsonConverterFactory.create())
+            
+            val tempclient = OkHttpClient()            
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(GsonConverterFactory.create()).client(tempclient)
+            
             var retrofit: Retrofit = builder.build()
             var client: UserInterface = retrofit.create(UserInterface::class.java)
             var loggedInUser: User? = null;

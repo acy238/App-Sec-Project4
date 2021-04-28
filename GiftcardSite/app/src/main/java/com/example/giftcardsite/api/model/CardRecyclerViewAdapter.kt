@@ -11,6 +11,8 @@ import com.example.giftcardsite.R
 import com.example.giftcardsite.UseCard
 import de.hdodenhof.circleimageview.CircleImageView
 
+import okhttp3.OkHttpClient
+
 class CardRecyclerViewAdapter(val context: Context, private val cardList: List<Card?>?, private val user: User?) : RecyclerView.Adapter<CardRecyclerViewAdapter.CardViewHolder>() {
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

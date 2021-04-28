@@ -29,6 +29,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+import okhttp3.OkHttpClient
+
+
 class CardScrollingActivity : AppCompatActivity() {
     private var loggedInUser : User? = null
 //     private lateinit var sensorManager: SensorManager
@@ -56,8 +59,9 @@ class CardScrollingActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+        val tempclient = OkHttpClient()
         var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
-            GsonConverterFactory.create())
+            GsonConverterFactory.create()).client(tempclient)
         var retrofit: Retrofit = builder.build()
         var client: CardInterface = retrofit.create(CardInterface::class.java)
         val outerContext = this

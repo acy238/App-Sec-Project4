@@ -21,6 +21,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+import okhttp3.OkHttpClient
+
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
@@ -42,9 +44,11 @@ class ThirdFragment : Fragment() {
             // If auth successful, move to new activity: logged in activity.
             var username : String = view.findViewById<EditText>(R.id.username).text.toString()
             var password : String = view.findViewById<EditText>(R.id.registerPassword).text.toString()
-
+            
+            val tempclient = OkHttpClient()
             var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
-                GsonConverterFactory.create())
+                GsonConverterFactory.create()).client(tempclient)
+            
             var retrofit: Retrofit = builder.build()
             var client: UserInterface = retrofit.create(UserInterface::class.java)
             var loggedInUser: User? = null;

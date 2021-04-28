@@ -13,6 +13,8 @@ import com.example.giftcardsite.GetCard
 import com.example.giftcardsite.R
 import de.hdodenhof.circleimageview.CircleImageView
 
+import okhttp3.OkHttpClient
+
 class RecyclerViewAdapter(val context: Context, private val productList: List<Product?>?, private val user: User?) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

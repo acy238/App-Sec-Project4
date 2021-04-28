@@ -19,6 +19,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Integer.parseInt
 
+import okhttp3.OkHttpClient
+
 class GetCard : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

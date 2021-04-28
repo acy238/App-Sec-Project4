@@ -30,6 +30,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+import okhttp3.OkHttpClient
+
 class ProductScrollingActivity : AppCompatActivity() {
     var loggedInUser: User? = null
 //     private lateinit var sensorManager: SensorManager
@@ -58,8 +60,10 @@ class ProductScrollingActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //var productList: List<Product?>? = null
+        val tempclient = OkHttpClient()
         var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
-                GsonConverterFactory.create())
+                GsonConverterFactory.create()).client(tempclient)
+        
         var retrofit: Retrofit = builder.build()
         var client: ProductInterface = retrofit.create(ProductInterface::class.java)
         val outerContext = this

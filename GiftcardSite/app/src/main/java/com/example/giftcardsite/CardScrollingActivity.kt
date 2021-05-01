@@ -59,7 +59,7 @@ class CardScrollingActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        val tempclient = OkHttpClient()
+//         val tempclient = OkHttpClient()
         var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()

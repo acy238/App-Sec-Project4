@@ -60,9 +60,9 @@ class ProductScrollingActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //var productList: List<Product?>? = null
-        val tempclient = OkHttpClient()
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
-                GsonConverterFactory.create()).client(tempclient)
+//         val tempclient = OkHttpClient()
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
+                GsonConverterFactory.create())
         
         var retrofit: Retrofit = builder.build()
         var client: ProductInterface = retrofit.create(ProductInterface::class.java)

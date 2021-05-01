@@ -45,9 +45,11 @@ class ThirdFragment : Fragment() {
             var username : String = view.findViewById<EditText>(R.id.username).text.toString()
             var password : String = view.findViewById<EditText>(R.id.registerPassword).text.toString()
             
-            val tempclient = OkHttpClient()
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
-                GsonConverterFactory.create()).client(tempclient)
+//             val tempclient = OkHttpClient()
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(GsonConverterFactory.create())
+//             var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
+//                 GsonConverterFactory.create()).client(tempclient)
+            
             
             var retrofit: Retrofit = builder.build()
             var client: UserInterface = retrofit.create(UserInterface::class.java)

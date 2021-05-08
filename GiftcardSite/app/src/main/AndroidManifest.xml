@@ -76,11 +76,11 @@
             android:label="@string/app_name"
             android:permission="project4permission"
             android:theme="@style/Theme.GiftcardSite.NoActionBar">
-<!--             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
         <activity
             android:name=".CardScrollingActivity"

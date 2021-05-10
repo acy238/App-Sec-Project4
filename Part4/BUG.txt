@@ -12,3 +12,7 @@ The problem occurs when an adversary purchases a giftcard for a few dollars/cent
   The adversary could decrement the "card_number" by a single unit, until a giftcard (that is not used yet) is found by the adversary.
 
 A potential solution would be to check that the giftcard's owner matches the user of the given token.
+  Within "api/model/Card.kt" - we could include an extra variable for the "data class Card(...)" to include: "var card_owner: String?"
+  Within "UseCard.kt" - we then check to see if the card's "card_owner" matches the "loggedInUser" defined at line #38, for reference here below: 
+    -> val loggedInUser : User? = intent.getParcelableExtra("User")
+  Hence, if the "card_owner" does not match the "loggedInUser", then the response for this "Use Card" should be not successful (i.e., rejected).

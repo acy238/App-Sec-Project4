@@ -1,16 +1,14 @@
 We can see that when a card is used (by looking at the file: UseCard.kt) that a "token" is generated from the "loggedInUser" at line #37.
   line #37 -> var token : String = "Token " + loggedInUser?.token.toString()
   This token is subsequently passed into a function call as the second parameter at line #48.
+  However, the validity of this token is NOT checked.
   
 Starting at line #48, client.useCard(card?.id, token)?.enqueue(object : Callback<Card?> {...}, we see that the token is the second parameter.
-  Within the file: CardInterface.kt, we see that the second parameter of the function "useCard" is the @Header for "Authorization" (authHeader). 
-  And the value given to the second parameter here is "token".
-Hence, the application is telling the server to use a giftcard with that specific giftcard number, and special token. 
+The first parameter is: "@Path("card_number") card_number: Int?"
+  And we see that the card number is the identifier given to the "Path" for the function: "useCard" defined within "CardInterface.kt".
+  Hence, the application will use a giftcard with that specific giftcard number in its path, and an unverified token.
   
-The problem here that could occur is if two separate and distinct logged-in users:
-  1. Registered their account with the same password and 
-  2. Purchased the same giftcard type (i.e., same giftcard number)
-Since both users have the same password, they would have the same "token" for the same giftcard types.
+The problem occurs when an adversary purchases a giftcard for a few dollars/cents (near free), and attempts to decrement the giftcard's "card_number".
+  The adversary could decrement the "card_number" by a single unit, until a giftcard (that is not used yet) is found by the adversary.
 
-A potential would be to change the User API for the "setToken" function, to also include the "username" to be a part of the token generation. 
-  This approach ensures that a giftcard of any type, can only be used by the original purchaser (since token generation considers both username and password).
+A potential solution would be to check that the giftcard's owner matches the user of the given token.

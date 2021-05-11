@@ -6,13 +6,16 @@ We can see that when a card is used (by looking at the file: UseCard.kt) that a 
 Starting at line #48, client.useCard(card?.id, token)?.enqueue(object : Callback<Card?> {...}, we see that the token is the second parameter.
 The first parameter is: "@Path("card_number") card_number: Int?"
   And we see that the card number is the identifier given to the "Path" for the function: "useCard" defined within "CardInterface.kt".
-  Hence, the application will use a giftcard with that specific giftcard number in its path, and an unverified token.
+  Hence, the application will use a giftcard with that specific giftcard's "card_number" in its path, and with an unverified token.
   
-The problem occurs when an adversary purchases a giftcard for a few dollars/cents (near free), and attempts to decrement the giftcard's "card_number".
+The problem occurs when:
+  An adversary purchases a giftcard for a few dollars/cents (near free) to get a giftcard's "card_number"
+  Next, attempts to decrement the giftcard's "card_number", to see if there are any unused giftcards in the database.
   The adversary could decrement the "card_number" by a single unit, until a giftcard (that is not used yet) is found by the adversary.
 
-A potential solution would be to check that the giftcard's owner matches the user of the given token.
+A potential solution would be to check that the giftcard's owner matches the user of the given token from the function's parameter.
   Within "api/model/Card.kt" - we could include an extra variable for the "data class Card(...)" to include: "var card_owner: String?"
+    Thus, we now have a variable called "card_owner".
   Within "UseCard.kt" - we then check to see if the card's "card_owner" matches the "loggedInUser" defined at line #38, for reference here below: 
     -> val loggedInUser : User? = intent.getParcelableExtra("User")
   Hence, if the "card_owner" does not match the "loggedInUser", then the response for this "Use Card" should be not successful (i.e., rejected).

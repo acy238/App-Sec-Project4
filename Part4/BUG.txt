@@ -10,7 +10,7 @@ The first parameter is: "@Path("card_number") card_number: Int?"
   
 The problem occurs when:
   An adversary purchases a giftcard for a few dollars/cents (near free) to get a giftcard's "card_number"
-  Next, attempts to decrement the giftcard's "card_number", to see if there are any unused giftcards in the database.
+  Next, attempts to decrement the giftcard's "card_number", to see if there are any unused giftcards left in the database that can be returned.
   The adversary could decrement the "card_number" by a single unit, until a giftcard (that is not used yet) is found by the adversary.
 
 A potential solution would be to check that the giftcard's owner matches the user of the given token from the function's parameter.

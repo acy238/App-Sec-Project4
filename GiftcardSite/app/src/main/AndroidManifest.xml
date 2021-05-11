@@ -12,8 +12,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 <!--     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> Note: MOCK_LOCATION left below for emulator -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
     <uses-permission android:name="project4permission"/>
 
 
